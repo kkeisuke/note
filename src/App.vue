@@ -1,15 +1,14 @@
 <template>
-  <div id="app">
-  </div>
+  <div id="app"></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {}
-});
+})
 </script>
 
 <style lang="scss"></style>
