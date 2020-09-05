@@ -4,4 +4,7 @@ import './registerServiceWorker'
 
 import '@/styles/tailwind.scss'
 
+// setup DB
+import '@/repository/NoteRepositoryProvider'
+
 createApp(App).mount('#app')
