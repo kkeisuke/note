@@ -17,6 +17,7 @@ export const noteSingleDexieRepository: NoteSingleRepository = {
     if (!result) {
       throw new Error('error update')
     }
+    return note
   },
   delete(id: string) {
     return noteDexieRepository.table().delete(id)

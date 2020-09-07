@@ -13,7 +13,7 @@ export type NoteCollectionRepository = {
 
 export type NoteSingleRepository = {
   read: (id: string) => Promise<Note>
-  update: (note: Note) => Promise
+  update: (note: Note) => Promise<Note>
   delete: (id: string) => Promise
 }
 
