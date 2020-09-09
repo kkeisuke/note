@@ -1,6 +1,6 @@
-import { inject, provide, reactive } from 'vue';
-import { noteRepositoryProvider } from '@/repository/NoteRepositoryProvider';
-import { getDefaultNote, Note } from "@/entity/Note";
+import { inject, provide, reactive } from 'vue'
+import { noteRepositoryProvider } from '@/repository/NoteRepositoryProvider'
+import { getDefaultNote, Note } from '@/entity/Note'
 
 const NoteSingle = {
   note: getDefaultNote(),
