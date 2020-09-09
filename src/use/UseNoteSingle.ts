@@ -40,11 +40,11 @@ const UseNoteSingle = () => {
 type ReturnUseNoteSingle = ReturnType<typeof UseNoteSingle>
 const USE_NOTE_SINGLE = Symbol()
 
-export const provideUseNoteCollection = (): void => {
+export const provideUseNoteSingle = (): void => {
   provide(USE_NOTE_SINGLE, UseNoteSingle())
 }
 
-export const injectUseNoteCollection = (): ReturnUseNoteSingle => {
+export const injectUseNoteSingle = (): ReturnUseNoteSingle => {
   const useNoteSingle = inject<ReturnUseNoteSingle>(USE_NOTE_SINGLE)
 
   if (useNoteSingle) {
