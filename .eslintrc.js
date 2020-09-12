@@ -21,13 +21,16 @@ module.exports = {
     'vue/eqeqeq': 'error',
     'vue/key-spacing': 'error',
     'vue/match-component-file-name': 'error',
-    'vue/object-curly-spacing': 'error',
+    'vue/object-curly-spacing': ['error', 'always'],
     'vue/script-indent': 'error',
     'vue/space-infix-ops': 'error',
     'vue/space-unary-ops': 'error',
     'vue/v-on-function-call': 'error',
     'no-console': 'warn',
-    'no-debugger': 'warn'
+    'no-debugger': 'warn',
+    // for 3.v Syntax
+    'vue/no-v-model-argument': 'off',
+    'vue/no-multiple-template-root': 'off'
   },
 
   overrides: [
