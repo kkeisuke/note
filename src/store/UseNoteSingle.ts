@@ -44,7 +44,10 @@ const UseNoteSingle = () => {
 
   async function destroy(note: Note) {
     await repo.delete(note.id)
-    noteSingle.reset()
+    const current = noteSingle.get()
+    if (current.id === note.id) {
+      noteSingle.reset()
+    }
   }
 
   return {
