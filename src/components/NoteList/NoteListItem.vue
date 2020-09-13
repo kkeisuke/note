@@ -7,28 +7,24 @@
     <p class="text-xs truncate">{{ note.content }}</p>
     <div class="flex justify-between">
       <p class="text-xs">{{ useDateFormatter.datetime(note.updatedAt) }}</p>
-      <template v-if="useNoteListItem.canRemove.value">
-        <button class="text-red-500 text-xs focus:outline-none" @click="useNoteListItem.remove($event, note)">delete</button>
-      </template>
-      <template v-else>
-        <button class="text-xs focus:outline-none" @click="useNoteListItem.confirmRemove">
-          <svg class="inline-block h-4 w-4 hover:text-red-600">
-            <use :xlink:href="removeIcon" />
-          </svg>
-        </button>
-      </template>
+      <NoteListItemDelete :note="note"></NoteListItemDelete>
     </div>
   </li>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { UseDateFormatter } from '@/formatter/UseDateFormatter'
 import { UseNoteListItem } from '@/components/NoteList/use/UseNoteListItem'
 import type { Note } from '@/entity/Note'
 
+import NoteListItemDelete from '@/components/NoteList/NoteListItemDelete.vue'
+
 export default defineComponent({
   name: 'NoteListItem',
+  components: {
+    NoteListItemDelete
+  },
   props: {
     note: {
       type: Object as PropType<Note>,
@@ -41,8 +37,7 @@ export default defineComponent({
   setup() {
     return {
       useNoteListItem: UseNoteListItem(),
-      useDateFormatter: UseDateFormatter(),
-      removeIcon: computed(() => `${require('bootstrap-icons/bootstrap-icons.svg')}#x`)
+      useDateFormatter: UseDateFormatter()
     }
   }
 })
