@@ -30,7 +30,8 @@ module.exports = {
     'no-debugger': 'warn',
     // for 3.v Syntax
     'vue/no-v-model-argument': 'off',
-    'vue/no-multiple-template-root': 'off'
+    'vue/no-multiple-template-root': 'off',
+    'vue/no-v-for-template-key': 'off'
   },
 
   overrides: [
