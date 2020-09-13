@@ -1,24 +1,40 @@
-import { inject, provide, reactive } from 'vue'
+import { computed, inject, provide, reactive } from 'vue'
 import { noteRepositoryProvider } from '@/repository/NoteRepositoryProvider'
 import { getDefaultNote, Note } from '@/entity/Note'
 
 const NoteSingle = {
   note: getDefaultNote(),
   set(note: Note) {
-    this.note = note
+    Object.assign(this.note, note)
   },
   get(): Readonly<Note> {
     return this.note
+  },
+  reset() {
+    this.set(getDefaultNote())
   }
 }
 
 const UseNoteSingle = () => {
   const noteSingle = reactive(NoteSingle)
   const repo = noteRepositoryProvider.getNoteSingleRepository()
+  const cacheRepo = noteRepositoryProvider.getNoteSingleCacheRepository()
 
-  async function read(id: string) {
-    const note = await repo.read(id)
-    noteSingle.set(note)
+  async function read(id: Note['id']) {
+    try {
+      const note = await repo.read(id)
+      noteSingle.set(note)
+      cacheRepo.set(note)
+    } catch (error) {
+      cacheRepo.reset()
+    }
+  }
+
+  function readCache() {
+    const noteID = cacheRepo.get()
+    if (noteID) {
+      read(noteID)
+    }
   }
 
   async function update(note: Note) {
@@ -28,14 +44,20 @@ const UseNoteSingle = () => {
 
   async function destroy(note: Note) {
     await repo.delete(note.id)
+    noteSingle.reset()
   }
 
   return {
     read,
+    readCache,
     update,
-    destroy
+    destroy,
+    note: computed(() => noteSingle.get()),
+    clone: computed(() => reactive({ ...noteSingle.get() }))
   }
 }
+
+export type ReturnTypeUseNoteSingle = ReturnType<typeof UseNoteSingle>
 
 type ReturnUseNoteSingle = ReturnType<typeof UseNoteSingle>
 const USE_NOTE_SINGLE = Symbol()

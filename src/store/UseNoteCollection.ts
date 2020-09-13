@@ -1,6 +1,6 @@
-import { inject, provide, reactive } from 'vue'
+import { computed, inject, provide, reactive } from 'vue'
 import { noteRepositoryProvider } from '@/repository/NoteRepositoryProvider'
-import { Note } from '@/entity/Note'
+import { getDefaultNote, Note } from '@/entity/Note'
 
 const NoteCollection = {
   notes: [] as Note[],
@@ -21,27 +21,20 @@ const UseNoteCollection = () => {
     noteCollection.set(notes)
   }
 
-  async function add(note: Note) {
-    const notes = await repo.add(note)
-    noteCollection.set(notes)
-  }
-
-  async function remove(note: Note) {
-    const notes = await repo.remove(note)
-    noteCollection.set(notes)
-  }
-
-  function getNotes() {
-    return noteCollection.get()
+  async function add() {
+    const id = await repo.add(getDefaultNote())
+    fetch()
+    return id
   }
 
   return {
     fetch,
     add,
-    remove,
-    getNotes
+    notes: computed(() => noteCollection.get())
   }
 }
+
+export type ReturnTypeUseNoteCollection = ReturnType<typeof UseNoteCollection>
 
 type ReturnUseNoteCollection = ReturnType<typeof UseNoteCollection>
 const USE_NOTE_COLLECTION = Symbol()
