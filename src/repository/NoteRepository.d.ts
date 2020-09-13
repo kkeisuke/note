@@ -7,18 +7,24 @@ export type NoteRepository<T> = {
 
 export type NoteCollectionRepository = {
   fetch: () => Promise<Note[]>
-  add: (note: Note) => Promise<Note[]>
-  remove: (note: Note) => Promise<Note[]>
+  add: (note: Note) => Promise<string>
 }
 
 export type NoteSingleRepository = {
-  read: (id: string) => Promise<Note>
+  read: (id: Note['id']) => Promise<Note>
   update: (note: Note) => Promise<Note>
-  delete: (id: string) => Promise
+  delete: (id: Note['id']) => Promise
+}
+
+export type NoteSingleCacheRepository = {
+  set: (note: Note) => void
+  get: () => Note['id']
+  reset: () => void
 }
 
 export type NoteRepositoryProvider = {
   getNoteRepository: () => NoteRepository
-  getNoteSingleRepository: () => NoteSingleRepository
   getNoteCollectionRepository: () => NoteCollectionRepository
+  getNoteSingleRepository: () => NoteSingleRepository
+  getNoteSingleCacheRepository: () => NoteSingleCacheRepository
 }
