@@ -1,6 +1,6 @@
 <template>
   <div class="NoteMenu border-b p-3 text-right">
-    <button class="text-xs focus:outline-none" @click="useNoteMenu.addNote">
+    <button class="text-xs focus:outline-none" @click="useNoteAdd.add">
       <svg class="inline-block h-5 w-5 hover:text-indigo-600">
         <use :xlink:href="addIcon" />
       </svg>
@@ -10,13 +10,13 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { UseNoteMenu } from '@/components/NoteList/use/UseNoteMenu'
+import { UseNoteAdd } from '@/components/NoteList/use/UseNoteAdd'
 
 export default defineComponent({
   name: 'NoteMenu',
   setup() {
     return {
-      useNoteMenu: UseNoteMenu(),
+      useNoteAdd: UseNoteAdd(),
       addIcon: computed(() => `${require('bootstrap-icons/bootstrap-icons.svg')}#plus-circle`)
     }
   }
