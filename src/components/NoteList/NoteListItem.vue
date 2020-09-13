@@ -1,10 +1,13 @@
 <template>
   <li class="p-3 border-b cursor-pointer" :class="{ 'bg-gray-300': useNoteListItem.isSelected(note.id) }" @click="useNoteListItem.select(note.id)">
-    <p class="text-sm">
+    <p class="text-sm truncate">
       <span v-if="note.title">{{ note.title }}</span>
-      <span v-else class="text-gray-400">No Title</span>
+      <span v-else class="text-gray-500">No Title</span>
     </p>
-    <p class="text-xs truncate">{{ note.content }}</p>
+    <p class="text-xs truncate">
+      <span v-if="note.content">{{ note.content }}</span>
+      <span v-else class="text-gray-500">No Contents</span>
+    </p>
     <div class="flex justify-between">
       <p class="text-xs">{{ useDateFormatter.datetime(note.updatedAt) }}</p>
       <NoteListItemDelete :note="note"></NoteListItemDelete>
