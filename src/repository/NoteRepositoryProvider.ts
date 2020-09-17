@@ -2,10 +2,10 @@ import type { RepositoryInfo, NoteRepositoryProvider } from '@/repository/NoteRe
 import { repositoryMap } from '@/repository/NoteRepositoryMap'
 
 const repositoryInfo: RepositoryInfo = {
-  name:'mock'
+  name: 'mock'
 }
 
-export function initRepositoryProvider(name: RepositoryInfo['name']) {
+export function initRepositoryProvider(name: RepositoryInfo['name']): void {
   repositoryInfo.name = name
 }
 

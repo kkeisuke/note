@@ -1,4 +1,4 @@
-import { NoteRepositoryMap } from './NoteRepository'
+import type { NoteRepositoryMap } from './NoteRepository'
 import { noteCollectionDexieRepository } from '@/repository/dexie/NoteCollectionDexieRepository'
 import { noteSingleDexieRepository } from '@/repository/dexie/NoteSingleDexieRepository'
 import { noteSingleLocalStorageRepository } from '@/repository/localStorage/NoteSingleLocalStorageRepository'

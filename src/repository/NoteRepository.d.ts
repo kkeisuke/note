@@ -32,8 +32,10 @@ export type NoteRepositoryProvider = {
   getNoteSingleCacheRepository: () => NoteSingleCacheRepository
 }
 
-export type NoteRepositoryMap = { [k in RepositoryInfo['name']]: {
-  noteCollection: NoteCollectionRepository
-  noteSingle: NoteSingleRepository
-  noteSingleCache: NoteSingleCacheRepository
-} }
+export type NoteRepositoryMap = {
+  [k in RepositoryInfo['name']]: {
+    noteCollection: NoteCollectionRepository
+    noteSingle: NoteSingleRepository
+    noteSingleCache: NoteSingleCacheRepository
+  }
+}
