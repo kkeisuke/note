@@ -5,7 +5,7 @@ import { v4 } from 'uuid'
 import dayjs from 'dayjs'
 
 export const noteCollectionDexieRepository: NoteCollectionRepository = {
-  async add(note: Note) {
+  add(note: Note) {
     note.id = v4()
     note.createdAt = dayjs().format()
     note.updatedAt = dayjs().format()

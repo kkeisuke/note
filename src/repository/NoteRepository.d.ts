@@ -17,7 +17,7 @@ export type NoteCollectionRepository = {
 export type NoteSingleRepository = {
   read: (id: Note['id']) => Promise<Note>
   update: (note: Note) => Promise<Note>
-  delete: (id: Note['id']) => Promise
+  delete: (id: Note['id']) => Promise<string>
 }
 
 export type NoteSingleCacheRepository = {

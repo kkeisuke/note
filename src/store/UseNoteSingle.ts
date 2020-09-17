@@ -43,10 +43,15 @@ const UseNoteSingle = () => {
   }
 
   async function destroy(note: Note) {
-    await repo.delete(note.id)
-    const current = noteSingle.get()
-    if (current.id === note.id) {
-      noteSingle.reset()
+    try {
+      await repo.delete(note.id)
+      const current = noteSingle.get()
+      if (current.id === note.id) {
+        noteSingle.reset()
+        cacheRepo.reset()
+      }
+    } catch (error) {
+      // 取り急ぎ error は出さない
     }
   }
 

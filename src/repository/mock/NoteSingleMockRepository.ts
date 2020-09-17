@@ -1,14 +1,13 @@
 import type { Note } from '@/entity/Note'
 import type { NoteSingleRepository } from '@/repository/NoteRepository'
-import { noteDexieRepository } from '@/repository/dexie/NoteDexieRepository'
-import dayjs from 'dayjs'
+import { noteMockRepository } from './NoteMockRepository'
 
-export const noteSingleDexieRepository: NoteSingleRepository = {
+export const noteSingleMockRepository: NoteSingleRepository = {
   async read(id: Note['id']) {
     if (!id) {
       throw new Error('empty id')
     }
-    const note = await noteDexieRepository.table().get(id)
+    const note = noteMockRepository.notes.find((note) => note.id === id)
     if (note) {
       return note
     }
@@ -18,8 +17,8 @@ export const noteSingleDexieRepository: NoteSingleRepository = {
     if (!note.id) {
       throw new Error('empty id')
     }
-    note.updatedAt = dayjs().format()
-    const result = await noteDexieRepository.table().update(note.id, note)
+    const target = noteMockRepository.notes.find((target) => target.id === note.id)
+    const result = target ? Object.assign(target, note) : null
     if (!result) {
       throw new Error('error update')
     }
@@ -29,10 +28,11 @@ export const noteSingleDexieRepository: NoteSingleRepository = {
     if (!id) {
       throw new Error('empty id')
     }
-    try {
-      await noteDexieRepository.table().delete(id)
+    const index = noteMockRepository.notes.findIndex((note) => note.id === id)
+    if (index >= 0) {
+      noteMockRepository.notes.splice(index, 1)
       return id
-    } catch (error) {
+    } else {
       throw new Error('error delete')
     }
   }
