@@ -2,7 +2,7 @@ import type { NoteSingleCacheRepository } from '@/repository/NoteRepository.d.ts
 
 const CACHE_KEY = 'currentNote'
 
-export const NoteSingleLocalStorageRepository: NoteSingleCacheRepository = {
+export const noteSingleLocalStorageRepository: NoteSingleCacheRepository = {
   set(note) {
     window.localStorage.setItem(CACHE_KEY, note.id)
   },

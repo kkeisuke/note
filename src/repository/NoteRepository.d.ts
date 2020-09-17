@@ -1,5 +1,9 @@
 import type { Note } from '@/entity/Note'
 
+export type RepositoryInfo = {
+  name: 'mock' | 'dexie'
+}
+
 export type NoteRepository<T> = {
   init: () => void
   table: () => T
@@ -23,8 +27,13 @@ export type NoteSingleCacheRepository = {
 }
 
 export type NoteRepositoryProvider = {
-  getNoteRepository: () => NoteRepository
   getNoteCollectionRepository: () => NoteCollectionRepository
   getNoteSingleRepository: () => NoteSingleRepository
   getNoteSingleCacheRepository: () => NoteSingleCacheRepository
 }
+
+export type NoteRepositoryMap = { [k in RepositoryInfo['name']]: {
+  noteCollection: NoteCollectionRepository
+  noteSingle: NoteSingleRepository
+  noteSingleCache: NoteSingleCacheRepository
+} }

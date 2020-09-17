@@ -1,20 +1,22 @@
-import type { NoteRepositoryProvider } from '@/repository/NoteRepository'
-import { noteDexieRepository } from '@/repository/dexie/NoteDexieRepository'
-import { noteCollectionDexieRepository } from '@/repository/dexie/NoteCollectionDexieRepository'
-import { noteSingleDexieRepository } from '@/repository/dexie/NoteSingleDexieRepository'
-import { NoteSingleLocalStorageRepository } from '@/repository/localStorage/NoteSingleLocalStorageRepository'
+import type { RepositoryInfo, NoteRepositoryProvider } from '@/repository/NoteRepository'
+import { repositoryMap } from '@/repository/NoteRepositoryMap'
+
+const repositoryInfo: RepositoryInfo = {
+  name:'mock'
+}
+
+export function initRepositoryProvider(name: RepositoryInfo['name']) {
+  repositoryInfo.name = name
+}
 
 export const noteRepositoryProvider: NoteRepositoryProvider = {
-  getNoteRepository() {
-    return noteDexieRepository
-  },
   getNoteCollectionRepository() {
-    return noteCollectionDexieRepository
+    return repositoryMap[repositoryInfo.name].noteCollection
   },
   getNoteSingleRepository() {
-    return noteSingleDexieRepository
+    return repositoryMap[repositoryInfo.name].noteSingle
   },
   getNoteSingleCacheRepository() {
-    return NoteSingleLocalStorageRepository
+    return repositoryMap[repositoryInfo.name].noteSingleCache
   }
 }
