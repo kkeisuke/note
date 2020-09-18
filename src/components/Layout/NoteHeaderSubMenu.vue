@@ -1,22 +1,19 @@
 <template>
   <div class="NoteHeaderSubMenu flex items-center">
     <a href="https://kkeisuke.com/" target="_blank">
-      <svg class="inline-block h-4 w-4 text-white">
-        <use :xlink:href="house" />
-      </svg>
+      <SvgIcon icon="house-fill" class="h-4 w-4 text-white"></SvgIcon>
     </a>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
+import SvgIcon from '@/components/Common/SvgIcon.vue'
 
 export default defineComponent({
   name: 'NoteHeaderSubMenu',
-  setup() {
-    return {
-      house: computed(() => `${require('bootstrap-icons/bootstrap-icons.svg')}#house-fill`)
-    }
+  components: {
+    SvgIcon
   }
 })
 </script>
