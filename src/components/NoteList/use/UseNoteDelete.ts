@@ -7,7 +7,7 @@ const DELETE_TIMEOUT = 5000
 
 export const UseNoteDelete = (): {
   canRemove: Ref<boolean>
-  confirmRemove: () => void
+  confirmRemove: (time?: number) => Promise<boolean>
   remove: (note: Note) => Promise<void>
 } => {
   const useNoteCollection = injectUseNoteCollection()
@@ -15,11 +15,14 @@ export const UseNoteDelete = (): {
 
   const canRemove = ref(false)
 
-  function confirmRemove() {
+  function confirmRemove(time: number = DELETE_TIMEOUT) {
     canRemove.value = true
-    setTimeout(() => {
-      canRemove.value = false
-    }, DELETE_TIMEOUT)
+    return new Promise<boolean>((resolve) => {
+      setTimeout(() => {
+        canRemove.value = false
+        resolve(canRemove.value)
+      }, time)
+    })
   }
 
   async function remove(note: Note) {
