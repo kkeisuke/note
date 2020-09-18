@@ -1,4 +1,20 @@
-# note
+# Note
+
+Note is a web application that uses **IndexedDB** and **LocalStorage**.
+
+## Features
+
+- PWA
+- Vue3
+- Vue CLI
+- TypeScript
+- @toast-ui/editor
+- dexie
+- tailwindcss
+
+etc...
+
+![screenshot](screenshot.png)
 
 ## Project setup
 ```
