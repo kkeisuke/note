@@ -10,7 +10,7 @@
     </p>
     <div class="mt-2 flex justify-between items-start">
       <p class="text-xxs">
-        created {{ useDateFormatter.datetime(note.createdAt) }} <br>
+        created {{ useDateFormatter.datetime(note.createdAt) }} <br />
         updated {{ useDateFormatter.datetime(note.updatedAt) }}
       </p>
       <NoteListItemDelete :note="note"></NoteListItemDelete>

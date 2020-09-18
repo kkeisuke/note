@@ -2,9 +2,9 @@
   <div class="NoteEdit w-full border">
     <div v-if="useNoteEdit.note.id" class="content h-full">
       <div>
-        <input v-model="useNoteEdit.note.title" type="text" class="w-full p-3 outline-none" placeholder="Title" @blur="$emit('blur')" />
+        <input v-model="useNoteEdit.note.title" type="text" tabindex="1" class="w-full p-3 outline-none" placeholder="Title" @blur="$emit('blur')" />
       </div>
-      <MarkdownEditor :id="useNoteEdit.note.id" v-model:content="useNoteEdit.note.content" @blur="$emit('blur')"></MarkdownEditor>
+      <MarkdownEditor :id="useNoteEdit.note.id" v-model:content="useNoteEdit.note.content" :tabindex="2" @blur="$emit('blur')"></MarkdownEditor>
     </div>
   </div>
 </template>

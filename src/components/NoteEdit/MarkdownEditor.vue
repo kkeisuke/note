@@ -24,6 +24,10 @@ export default defineComponent({
     content: {
       type: String,
       default: ''
+    },
+    tabindex: {
+      type: Number,
+      default: 0
     }
   },
   data(): Data {
@@ -69,6 +73,8 @@ export default defineComponent({
       this.editor?.off('blur')
       this.editor?.remove()
       this.editor = new Editor(Object.assign(this.options, { plugins: [[uml, this.umlOptions]] }))
+      const codemirror = this.editor.getCodeMirror()
+      codemirror.setOption('tabindex', this.tabindex)
     }
   },
   render() {
