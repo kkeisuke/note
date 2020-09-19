@@ -2,9 +2,11 @@
 
 Note is a web application that uses **IndexedDB** and **LocalStorage**.
 
+![test](https://github.com/kkeisuke/note/workflows/Test/badge.svg)
+
 ## Features
 
-- PWA
+- PWA (Desktop)
 - Vue3
 - Vue CLI
 - TypeScript
