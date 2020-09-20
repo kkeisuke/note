@@ -15,4 +15,6 @@ jobs:
     - name: Install Dependencies
       run: npm ci
     - name: Test
-      run: npm run test:unit
+      run: |
+        npm run test:unit
+        npm run test:e2e:ci

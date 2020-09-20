@@ -23,3 +23,28 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('noteAdd', () => {
+  cy.get('#noteAdd').click()
+})
+
+Cypress.Commands.add('noteListItem', () => {
+  return cy.get('.NoteListItem')
+})
+
+Cypress.Commands.add('noteDeleteAll', () => {
+  cy.get('.NoteListItem').each(($el) => {
+    const item = cy.wrap($el)
+    const className = '.NoteListItemDelete'
+    item.get(className).first().click({ multiple: true })
+    item.get(className).first().click({ multiple: true })
+  })
+})
+
+Cypress.Commands.add('noteEditTitle', (title) => {
+  return cy.get('.NoteEdit #noteEditTitle')
+})
+
+Cypress.Commands.add('titleEdit', (title) => {
+  cy.noteEditTitle().clear().type(title).blur()
+})
