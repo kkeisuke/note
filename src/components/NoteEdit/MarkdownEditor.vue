@@ -6,6 +6,8 @@ import uml from '@toast-ui/editor-plugin-uml'
 import 'codemirror/lib/codemirror.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
 
+import { sanitize } from '@/plugins/sanitize'
+
 type Data = {
   editor: Editor | null
   options: EditorOptions
@@ -35,6 +37,7 @@ export default defineComponent({
       editor: null,
       options: {
         el: document.createElement('div'), // dummy for type
+        customHTMLSanitizer: (html) => sanitize(html),
         height: '100%',
         previewStyle: 'vertical',
         previewHighlight: false

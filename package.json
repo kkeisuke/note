@@ -17,12 +17,14 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.8.36",
     "dexie": "^3.0.2",
+    "dompurify": "^2.0.17",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "^1.8.10",
     "uuid": "^8.3.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
+    "@types/dompurify": "^2.0.4",
     "@types/jest": "^26.0.14",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
