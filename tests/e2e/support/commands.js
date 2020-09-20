@@ -41,7 +41,7 @@ Cypress.Commands.add('noteDeleteAll', () => {
   })
 })
 
-Cypress.Commands.add('noteEditTitle', (title) => {
+Cypress.Commands.add('noteEditTitle', () => {
   return cy.get('.NoteEdit #noteEditTitle')
 })
 
