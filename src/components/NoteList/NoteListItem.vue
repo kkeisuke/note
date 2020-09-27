@@ -8,11 +8,12 @@
       <span v-if="note.content">{{ note.content }}</span>
       <span v-else class="text-gray-500">No Contents</span>
     </p>
-    <div class="mt-2 flex justify-between items-start">
-      <p class="text-xxs">
-        created {{ useDateFormatter.datetime(note.createdAt) }} <br />
-        updated {{ useDateFormatter.datetime(note.updatedAt) }}
-      </p>
+    <p class="mt-1 text-xxs">
+      created {{ useDateFormatter.datetime(note.createdAt) }} <br />
+      updated {{ useDateFormatter.datetime(note.updatedAt) }}
+    </p>
+    <div class="mt-2 flex justify-between items-center">
+      <SvgIcon icon="download" class="h-3 w-3 hover:text-indigo-600" @click.stop="useNoteDownload.download(note)"></SvgIcon>
       <NoteListItemDelete :note="note"></NoteListItemDelete>
     </div>
   </li>
@@ -22,13 +23,16 @@
 import { defineComponent, PropType } from 'vue'
 import { UseDateFormatter } from '@/formatter/UseDateFormatter'
 import { UseNoteListItem } from '@/components/NoteList/use/UseNoteListItem'
+import { UseNoteDownload } from '@/components/NoteList/use/UseNoteDownload'
 import type { Note } from '@/entity/Note'
 
+import SvgIcon from '@/components/Common/SvgIcon.vue'
 import NoteListItemDelete from '@/components/NoteList/NoteListItemDelete.vue'
 
 export default defineComponent({
   name: 'NoteListItem',
   components: {
+    SvgIcon,
     NoteListItemDelete
   },
   props: {
@@ -43,6 +47,7 @@ export default defineComponent({
   setup() {
     return {
       useNoteListItem: UseNoteListItem(),
+      useNoteDownload: UseNoteDownload(),
       useDateFormatter: UseDateFormatter()
     }
   }
