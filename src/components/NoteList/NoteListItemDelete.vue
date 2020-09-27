@@ -29,7 +29,7 @@ export default defineComponent({
       }
     }
   },
-  setup({ note }) {
+  setup() {
     const useNoteDelete = UseNoteDelete()
 
     return {
