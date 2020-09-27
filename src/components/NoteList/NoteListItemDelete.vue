@@ -1,9 +1,9 @@
 <template>
   <template v-if="useNoteDelete.canRemove.value">
-    <button class="NoteListItemDelete text-red-500 text-xs focus:outline-none" @click="remove">delete</button>
+    <button class="NoteListItemDelete text-red-500 text-xs focus:outline-none" @click.stop="useNoteDelete.remove(note)">delete</button>
   </template>
   <template v-else>
-    <button class="NoteListItemDelete text-xs focus:outline-none" @click="confirmRemove">
+    <button class="NoteListItemDelete text-xs focus:outline-none" @click.stop="useNoteDelete.confirmRemove()">
       <SvgIcon icon="x" class="h-4 w-4 hover:text-red-600"></SvgIcon>
     </button>
   </template>
@@ -32,20 +32,8 @@ export default defineComponent({
   setup({ note }) {
     const useNoteDelete = UseNoteDelete()
 
-    function confirmRemove(event: MouseEvent) {
-      event.stopPropagation()
-      useNoteDelete.confirmRemove()
-    }
-
-    function remove(event: MouseEvent) {
-      event.stopPropagation()
-      useNoteDelete.remove(note)
-    }
-
     return {
-      useNoteDelete,
-      confirmRemove,
-      remove
+      useNoteDelete
     }
   }
 })

@@ -61,6 +61,10 @@ export default defineComponent({
     }
   },
   methods: {
+    setCodeMirrorOption() {
+      const codemirror = this.editor?.getCodeMirror()
+      codemirror?.setOption('tabindex', this.tabindex)
+    },
     renderEditor() {
       this.options.el = this.$el
       this.options.initialValue = this.content
@@ -76,8 +80,8 @@ export default defineComponent({
       this.editor?.off('blur')
       this.editor?.remove()
       this.editor = new Editor(Object.assign(this.options, { plugins: [[uml, this.umlOptions]] }))
-      const codemirror = this.editor.getCodeMirror()
-      codemirror.setOption('tabindex', this.tabindex)
+
+      this.setCodeMirrorOption()
     }
   },
   render() {
