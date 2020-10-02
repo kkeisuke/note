@@ -13,7 +13,6 @@
   "dependencies": {
     "@toast-ui/editor": "^2.4.0",
     "@toast-ui/editor-plugin-uml": "^1.0.0",
-    "bootstrap-icons": "^1.0.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.8.36",
     "dexie": "^3.0.2",

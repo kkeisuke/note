@@ -2,7 +2,7 @@
   <div class="NoteMenu border-b p-3 text-right">
     <!-- id for E2E test -->
     <button id="noteAdd" class="text-xs focus:outline-none" @click="useNoteAdd.add">
-      <SvgIcon icon="plus-circle" class="h-5 w-5 hover:text-indigo-600"></SvgIcon>
+      <SvgIcon icon="plus-circle" class="h-6 w-6 hover:text-indigo-600"></SvgIcon>
     </button>
   </div>
 </template>

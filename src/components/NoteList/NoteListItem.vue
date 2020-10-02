@@ -13,7 +13,7 @@
       updated {{ useDateFormatter.datetime(note.updatedAt) }}
     </p>
     <div class="mt-2 flex justify-between items-center">
-      <SvgIcon icon="download" class="h-3 w-3 hover:text-indigo-600" @click.stop="useNoteDownload.download(note)"></SvgIcon>
+      <SvgIcon icon="download" class="h-4 w-4 hover:text-indigo-600" @click.stop="useNoteDownload.download(note)"></SvgIcon>
       <NoteListItemDelete :note="note"></NoteListItemDelete>
     </div>
   </li>

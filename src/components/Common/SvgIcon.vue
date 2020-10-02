@@ -1,5 +1,5 @@
 <template>
-  <svg v-bind="$attrs" class="inline-block">
+  <svg v-bind="$attrs" class="inline-block" :class="{ [color]: true }">
     <use :xlink:href="svg" />
   </svg>
 </template>
@@ -14,11 +14,16 @@ export default defineComponent({
     icon: {
       type: String,
       default: ''
+    },
+    inverse: {
+      type: Boolean,
+      default: false
     }
   },
-  setup({ icon }) {
+  setup({ icon, inverse }) {
     return {
-      svg: computed(() => `${require('bootstrap-icons/bootstrap-icons.svg')}#${icon}`)
+      svg: computed(() => `${require(`@/assets/icons/${icon}.svg`)}#icon`),
+      color: computed(() => (inverse ? 'text-white' : 'text-gray-700'))
     }
   }
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="NoteHeaderSubMenu flex items-center">
-    <a href="https://kkeisuke.com/" target="_blank">
-      <SvgIcon icon="house-fill" class="h-4 w-4 text-white"></SvgIcon>
+    <a href="https://kkeisuke.com/" target="_blank" class="leading-none">
+      <SvgIcon icon="home-fill" class="h-5 w-5" inverse></SvgIcon>
     </a>
   </div>
 </template>
