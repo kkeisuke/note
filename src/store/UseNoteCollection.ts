@@ -35,16 +35,14 @@ const UseNoteCollection = () => {
 }
 
 export type ReturnTypeUseNoteCollection = ReturnType<typeof UseNoteCollection>
-
-type ReturnUseNoteCollection = ReturnType<typeof UseNoteCollection>
 const USE_NOTE_COLLECTION = Symbol()
 
 export const provideUseNoteCollection = (): void => {
   provide(USE_NOTE_COLLECTION, UseNoteCollection())
 }
 
-export const injectUseNoteCollection = (): ReturnUseNoteCollection => {
-  const useNoteCollection = inject<ReturnUseNoteCollection>(USE_NOTE_COLLECTION)
+export const injectUseNoteCollection = (): ReturnTypeUseNoteCollection => {
+  const useNoteCollection = inject<ReturnTypeUseNoteCollection>(USE_NOTE_COLLECTION)
 
   if (useNoteCollection) {
     return useNoteCollection

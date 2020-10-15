@@ -66,16 +66,14 @@ const UseNoteSingle = () => {
 }
 
 export type ReturnTypeUseNoteSingle = ReturnType<typeof UseNoteSingle>
-
-type ReturnUseNoteSingle = ReturnType<typeof UseNoteSingle>
 const USE_NOTE_SINGLE = Symbol()
 
 export const provideUseNoteSingle = (): void => {
   provide(USE_NOTE_SINGLE, UseNoteSingle())
 }
 
-export const injectUseNoteSingle = (): ReturnUseNoteSingle => {
-  const useNoteSingle = inject<ReturnUseNoteSingle>(USE_NOTE_SINGLE)
+export const injectUseNoteSingle = (): ReturnTypeUseNoteSingle => {
+  const useNoteSingle = inject<ReturnTypeUseNoteSingle>(USE_NOTE_SINGLE)
 
   if (useNoteSingle) {
     return useNoteSingle
