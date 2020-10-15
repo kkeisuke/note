@@ -15,15 +15,19 @@ export default defineComponent({
       type: String,
       default: ''
     },
+    fill: {
+      type: String,
+      default: 'text-gray-700'
+    },
     inverse: {
       type: Boolean,
       default: false
     }
   },
-  setup({ icon, inverse }) {
+  setup({ icon, inverse, fill }) {
     return {
       svg: computed(() => `${require(`@/assets/icons/${icon}.svg`)}#icon`),
-      color: computed(() => (inverse ? 'text-white' : 'text-gray-700'))
+      color: computed(() => (inverse ? 'text-white' : fill))
     }
   }
 })
