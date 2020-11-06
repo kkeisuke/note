@@ -1,3 +1,4 @@
+import { defineComponent } from 'vue'
 import { mount } from '@vue/test-utils'
 import { provideUseNoteCollection, injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { provideUseNoteSingle } from '@/store/UseNoteSingle'
@@ -5,11 +6,8 @@ import { UseNoteDelete } from '@/components/NoteList/use/UseNoteDelete'
 import { getDefaultNote } from '@/entity/Note'
 
 describe('components/UseNoteDelete', () => {
-  const useNoteDeleteComponent = mount({
+  const useNoteDeleteComponent = defineComponent({
     setup() {
-      provideUseNoteCollection()
-      provideUseNoteSingle()
-
       return {
         useNoteDelete: UseNoteDelete(),
         useNoteCollection: injectUseNoteCollection()
@@ -19,9 +17,21 @@ describe('components/UseNoteDelete', () => {
       return
     }
   })
+  const wrapper = mount({
+    components: {
+      useNoteDeleteComponent
+    },
+    setup() {
+      provideUseNoteCollection()
+      provideUseNoteSingle()
+      return {}
+    },
+    template: '<div><useNoteDeleteComponent /></div>'
+  })
+  const vm = wrapper.findComponent(useNoteDeleteComponent).vm
 
-  const useNoteDelete = useNoteDeleteComponent.vm.useNoteDelete
-  const useNoteCollection = useNoteDeleteComponent.vm.useNoteCollection
+  const useNoteDelete = vm.useNoteDelete
+  const useNoteCollection = vm.useNoteCollection
 
   test('confirmRemove/canRemove', async () => {
     useNoteDelete.confirmRemove(0)

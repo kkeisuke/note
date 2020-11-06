@@ -1,16 +1,14 @@
+import { defineComponent, render } from 'vue'
 import { mount } from '@vue/test-utils'
 import { injectUseNoteCollection, provideUseNoteCollection } from '@/store/UseNoteCollection'
 import { injectUseNoteSingle, provideUseNoteSingle } from '@/store/UseNoteSingle'
 import { getDefaultNote } from '@/entity/Note'
 
 describe('store/UseNoteSingle', () => {
-  const useNoteSingleComponent = mount({
+  const useNoteSingleComponent = defineComponent({
     setup() {
-      provideUseNoteCollection()
       const useNoteCollection = injectUseNoteCollection()
-      provideUseNoteSingle()
       const useNoteSingle = injectUseNoteSingle()
-
       return {
         useNoteCollection,
         useNoteSingle
@@ -20,9 +18,21 @@ describe('store/UseNoteSingle', () => {
       return
     }
   })
+  const wrapper = mount({
+    components: {
+      useNoteSingleComponent
+    },
+    setup() {
+      provideUseNoteCollection()
+      provideUseNoteSingle()
+      return {}
+    },
+    template: '<div><useNoteSingleComponent /></div>'
+  })
+  const vm = wrapper.findComponent(useNoteSingleComponent).vm
 
-  const useNoteCollection = useNoteSingleComponent.vm.useNoteCollection
-  const useNoteSingle = useNoteSingleComponent.vm.useNoteSingle
+  const useNoteCollection = vm.useNoteCollection
+  const useNoteSingle = vm.useNoteSingle
   const note = getDefaultNote()
   const noteID = 'test1'
   note.id = noteID

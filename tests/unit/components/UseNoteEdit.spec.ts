@@ -1,3 +1,4 @@
+import { defineComponent } from 'vue'
 import { mount } from '@vue/test-utils'
 import { injectUseNoteSingle, provideUseNoteSingle } from '@/store/UseNoteSingle'
 import { UseNoteEdit } from '@/components/NoteEdit/use/UseNoteEdit'
@@ -7,11 +8,9 @@ describe('components/NoteEdit', () => {
   const noteID = 'test0'
   window.localStorage.setItem('currentNote', noteID)
 
-  const useNoteSingleComponent = mount({
+  const useNoteSingleComponent = defineComponent({
     setup() {
-      provideUseNoteSingle()
       const useNoteSingle = injectUseNoteSingle()
-
       return {
         useNoteEdit: UseNoteEdit(),
         useNoteSingle
@@ -21,9 +20,20 @@ describe('components/NoteEdit', () => {
       return
     }
   })
+  const wrapper = mount({
+    components: {
+      useNoteSingleComponent
+    },
+    setup() {
+      provideUseNoteSingle()
+      return {}
+    },
+    template: '<div><useNoteSingleComponent /></div>'
+  })
+  const vm = wrapper.findComponent(useNoteSingleComponent).vm
 
-  const useNoteEdit = useNoteSingleComponent.vm.useNoteEdit
-  const useNoteSingle = useNoteSingleComponent.vm.useNoteSingle
+  const useNoteEdit = vm.useNoteEdit
+  const useNoteSingle = vm.useNoteSingle
 
   beforeAll(async () => {
     useNoteEdit.note.title = 'updated0'

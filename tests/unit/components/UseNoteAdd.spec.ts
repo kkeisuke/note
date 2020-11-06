@@ -1,14 +1,12 @@
+import { defineComponent } from 'vue'
 import { mount } from '@vue/test-utils'
 import { provideUseNoteCollection, injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { provideUseNoteSingle, injectUseNoteSingle } from '@/store/UseNoteSingle'
 import { UseNoteAdd } from '@/components/NoteList/use/UseNoteAdd'
 
 describe('components/UseNoteAdd', () => {
-  const useNoteAddComponent = mount({
+  const useNoteAddComponent = defineComponent({
     setup() {
-      provideUseNoteCollection()
-      provideUseNoteSingle()
-
       return {
         useNoteAdd: UseNoteAdd(),
         useNoteCollection: injectUseNoteCollection(),
@@ -19,10 +17,22 @@ describe('components/UseNoteAdd', () => {
       return
     }
   })
+  const wrapper = mount({
+    components: {
+      useNoteAddComponent
+    },
+    setup() {
+      provideUseNoteCollection()
+      provideUseNoteSingle()
+      return {}
+    },
+    template: '<div><useNoteAddComponent /></div>'
+  })
+  const vm = wrapper.findComponent(useNoteAddComponent).vm
 
-  const useNoteAdd = useNoteAddComponent.vm.useNoteAdd
-  const useNoteCollection = useNoteAddComponent.vm.useNoteCollection
-  const useNoteSingle = useNoteAddComponent.vm.useNoteSingle
+  const useNoteAdd = vm.useNoteAdd
+  const useNoteCollection = vm.useNoteCollection
+  const useNoteSingle = vm.useNoteSingle
 
   test('add', async () => {
     await useNoteAdd.add()
