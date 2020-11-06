@@ -2,7 +2,7 @@
   <h1 class="NoteHeader bg-gray-700 p-2">
     <div class="flex justify-between items-center">
       <span class="text-xl text-white font-semibold">{{ title }}</span>
-      <NoteHeaderSubMenu></NoteHeaderSubMenu>
+      <NoteHeaderSubMenu />
     </div>
   </h1>
 </template>

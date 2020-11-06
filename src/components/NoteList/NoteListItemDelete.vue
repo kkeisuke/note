@@ -4,7 +4,7 @@
   </template>
   <template v-else>
     <button class="NoteListItemDelete text-xs focus:outline-none leading-none" @click.stop="useNoteDelete.confirmRemove()">
-      <SvgIcon icon="x" class="h-4 w-4 hover:text-red-500"></SvgIcon>
+      <SvgIcon icon="x" class="h-4 w-4 hover:text-red-500" />
     </button>
   </template>
 </template>

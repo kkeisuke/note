@@ -5,10 +5,10 @@
         <!-- id for E2E test -->
         <input id="noteEditTitle" v-model="useNoteEdit.note.title" type="text" tabindex="1" class="w-full p-3 outline-none" placeholder="Title" @blur="$emit('blur')" />
       </div>
-      <MarkdownEditor :id="useNoteEdit.note.id" v-model:content="useNoteEdit.note.content" :tabindex="2" @blur="$emit('blur')"></MarkdownEditor>
+      <MarkdownEditor :id="useNoteEdit.note.id" v-model:content="useNoteEdit.note.content" :tabindex="2" @blur="$emit('blur')" />
     </div>
     <div v-else class="h-full grid place-items-center border-l border-r">
-      <SvgIcon icon="pencil-alt" fill="text-gray-200" class="h-48 w-48"></SvgIcon>
+      <SvgIcon icon="pencil-alt" fill="text-gray-200" class="h-48 w-48" />
     </div>
   </div>
 </template>

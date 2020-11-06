@@ -2,7 +2,7 @@
   <div class="NoteList h-full overflow-y-auto">
     <ul>
       <template v-for="note in useNoteList.notes.value" :key="note.id">
-        <NoteListItem :note="note"></NoteListItem>
+        <NoteListItem :note="note" />
       </template>
     </ul>
   </div>
