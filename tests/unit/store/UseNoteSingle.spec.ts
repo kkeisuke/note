@@ -1,4 +1,4 @@
-import { defineComponent, render } from 'vue'
+import { defineComponent, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { injectUseNoteCollection, provideUseNoteCollection } from '@/store/UseNoteCollection'
 import { injectUseNoteSingle, provideUseNoteSingle } from '@/store/UseNoteSingle'
@@ -15,7 +15,7 @@ describe('store/UseNoteSingle', () => {
       }
     },
     render() {
-      return
+      return h('div')
     }
   })
   const wrapper = mount({
@@ -27,7 +27,9 @@ describe('store/UseNoteSingle', () => {
       provideUseNoteSingle()
       return {}
     },
-    template: '<div><useNoteSingleComponent /></div>'
+    render() {
+      return h(useNoteSingleComponent)
+    }
   })
   const vm = wrapper.findComponent(useNoteSingleComponent).vm
 
