@@ -13,6 +13,8 @@ module.exports = {
   variants: {},
   plugins: [],
   future: {
+    defaultLineHeights: true,
+    standardFontWeights: true,
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
   }
