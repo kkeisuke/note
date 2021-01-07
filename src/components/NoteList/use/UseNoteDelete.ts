@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue'
+import { readonly, Ref, ref } from 'vue'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { injectUseNoteSingle } from '@/store/UseNoteSingle'
 import type { Note } from '@/entity/Note'
@@ -31,7 +31,7 @@ export const UseNoteDelete = (): {
   }
 
   return {
-    canRemove,
+    canRemove: readonly(canRemove),
     confirmRemove,
     remove
   }
