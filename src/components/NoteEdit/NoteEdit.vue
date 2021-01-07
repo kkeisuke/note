@@ -37,8 +37,7 @@ export default defineComponent({
 .NoteEdit {
   .content {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 2fr;
+    grid-template-rows: auto 1fr;
   }
 }
 </style>
