@@ -24,10 +24,10 @@ export default defineComponent({
       default: false
     }
   },
-  setup({ icon, inverse, fill }) {
+  setup(props) {
     return {
-      svg: computed(() => `${require(`@/assets/icons/${icon}.svg`)}#icon`),
-      color: computed(() => (inverse ? 'text-white' : fill))
+      svg: computed(() => `${require(`@/assets/icons/${props.icon}.svg`)}#icon`),
+      color: computed(() => (props.inverse ? 'text-white' : props.fill))
     }
   }
 })
