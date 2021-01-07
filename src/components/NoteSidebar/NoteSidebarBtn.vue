@@ -1,7 +1,7 @@
 <template>
   <div class="NoteSidebarBtn py-3 px-2 leading-snug">
     <!-- id for E2E test -->
-    <button id="sidebarBtn" class="text-xs focus:outline-none">
+    <button id="noteSidebarBtn" class="text-xs focus:outline-none">
       <SvgIcon :icon="icon" class="h-5 w-5 hover:text-blue-600" />
     </button>
   </div>

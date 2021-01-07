@@ -24,8 +24,16 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+Cypress.Commands.add('noteMenu', () => {
+  cy.get('.NoteMenu')
+})
+
 Cypress.Commands.add('noteAdd', () => {
   cy.get('#noteAdd').click()
+})
+
+Cypress.Commands.add('noteList', () => {
+  return cy.get('.NoteList')
 })
 
 Cypress.Commands.add('noteListItem', () => {
@@ -47,4 +55,16 @@ Cypress.Commands.add('noteEditTitle', () => {
 
 Cypress.Commands.add('titleEdit', (title) => {
   cy.noteEditTitle().clear().type(title).blur()
+})
+
+Cypress.Commands.add('noteSidebar', () => {
+  return  cy.get('.NoteSidebar')
+})
+
+Cypress.Commands.add('noteSidebarBtn', () => {
+  return  cy.get('#noteSidebarBtn')
+})
+
+Cypress.Commands.add('noteSidebarBtnSvg', () => {
+  return  cy.get('#noteSidebarBtn svg use')
 })

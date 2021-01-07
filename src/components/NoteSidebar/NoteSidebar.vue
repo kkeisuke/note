@@ -2,7 +2,7 @@
   <div :class="{ close: !useNoteSidebarLayout.isOpen.value }" class="NoteSidebar w-52 h-full overflow-hidden">
     <div class="flex justify-between border-b">
       <NoteSidebarBtn :is-open="useNoteSidebarLayout.isOpen.value" @click="useNoteSidebarLayout.toggle()" />
-      <NoteMenu v-if="useNoteSidebarLayout.isOpen.value" />
+      <NoteMenu v-show="useNoteSidebarLayout.isOpen.value" />
     </div>
     <NoteList :class="{ close: !useNoteSidebarLayout.isOpen.value }" />
   </div>
