@@ -58,13 +58,13 @@ Cypress.Commands.add('titleEdit', (title) => {
 })
 
 Cypress.Commands.add('noteSidebar', () => {
-  return  cy.get('.NoteSidebar')
+  return cy.get('.NoteSidebar')
 })
 
 Cypress.Commands.add('noteSidebarBtn', () => {
-  return  cy.get('#noteSidebarBtn')
+  return cy.get('#noteSidebarBtn')
 })
 
 Cypress.Commands.add('noteSidebarBtnSvg', () => {
-  return  cy.get('#noteSidebarBtn svg use')
+  return cy.get('#noteSidebarBtn svg use')
 })
