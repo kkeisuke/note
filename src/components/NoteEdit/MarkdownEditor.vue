@@ -65,6 +65,26 @@ export default defineComponent({
       const codemirror = this.editor?.getCodeMirror()
       codemirror?.setOption('tabindex', this.tabindex)
     },
+    setChangePreviewButton() {
+      const button = document.createElement('button')
+      button.innerText = 'P'
+      button.setAttribute('style', 'color:#000;line-height:1;font-weight:bold;')
+      button.addEventListener('click', () => {
+        if (this.editor?.getCurrentPreviewStyle() === 'tab') {
+          this.editor?.changePreviewStyle('vertical')
+        } else {
+          this.editor?.changePreviewStyle('tab')
+        }
+      })
+      const toolbar = this.editor?.getUI().getToolbar()
+      toolbar?.insertItem(0, {
+        type: 'button',
+        options: {
+          el: button,
+          tooltip: 'Change preview style'
+        }
+      })
+    },
     renderEditor() {
       this.options.el = this.$el
       this.options.initialValue = this.content
@@ -82,6 +102,7 @@ export default defineComponent({
       this.editor = new Editor(Object.assign(this.options, { plugins: [[uml, this.umlOptions]] }))
 
       this.setCodeMirrorOption()
+      this.setChangePreviewButton()
     }
   },
   render() {
