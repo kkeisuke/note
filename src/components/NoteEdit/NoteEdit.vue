@@ -25,6 +25,7 @@ export default defineComponent({
     SvgIcon,
     MarkdownEditor
   },
+  emits: ['blur'],
   setup() {
     return {
       useNoteEdit: UseNoteEdit()

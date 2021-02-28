@@ -1,4 +1,4 @@
-import type { NoteSingleCacheRepository } from '@/repository/NoteRepository.d.ts'
+import type { NoteSingleCacheRepository } from '@/repository/NoteRepository'
 
 const CACHE_KEY = 'currentNote'
 
