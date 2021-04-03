@@ -73,8 +73,10 @@ export default defineComponent({
       button.addEventListener('click', () => {
         if (this.editor?.getCurrentPreviewStyle() === 'tab') {
           this.editor?.changePreviewStyle('vertical')
+          this.options.previewStyle = 'vertical'
         } else {
           this.editor?.changePreviewStyle('tab')
+          this.options.previewStyle = 'tab'
         }
       })
       const toolbar = this.editor?.getUI().getToolbar()
