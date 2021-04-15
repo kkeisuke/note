@@ -40,6 +40,7 @@ export default defineComponent({
         el: document.createElement('div'), // dummy for type
         customHTMLSanitizer: (html) => sanitize(html),
         height: '100%',
+        extendedAutolinks: true,
         previewStyle: 'vertical',
         previewHighlight: false
       },
