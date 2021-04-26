@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig} */
+const config = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: ['./public/**/*.html', './src/**/*.vue']
@@ -19,3 +20,5 @@ module.exports = {
     purgeLayersByDefault: true
   }
 }
+
+module.exports = config

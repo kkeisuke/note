@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('@vue/cli-service').ProjectOptions} */
+const config = {
   productionSourceMap: false,
 
   pwa: {
@@ -6,3 +7,5 @@ module.exports = {
     themeColor: '#4A4A4A'
   }
 }
+
+module.exports = config

@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('@typescript-eslint/experimental-utils').TSESLint.Linter.Config} */
+const config = {
   root: true,
 
   env: {
@@ -43,3 +44,5 @@ module.exports = {
     }
   ]
 }
+
+module.exports = config
