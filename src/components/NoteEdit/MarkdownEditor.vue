@@ -3,7 +3,6 @@ import { defineComponent, h, nextTick } from 'vue'
 
 import Editor, { EditorOptions } from '@toast-ui/editor'
 import uml from '@toast-ui/editor-plugin-uml'
-import 'codemirror/lib/codemirror.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
 
 import { sanitize } from '@/plugins/sanitize'
@@ -63,14 +62,16 @@ export default defineComponent({
     }
   },
   methods: {
-    setCodeMirrorOption() {
-      const codemirror = this.editor?.getCodeMirror()
-      codemirror?.setOption('tabindex', this.tabindex)
+    setEditorAttribute() {
+      this.editor?.getEditorElements()?.mdEditor.querySelector('[contenteditable="true"]')?.setAttribute('tabindex', String(this.tabindex))
     },
     setChangePreviewButton() {
       const button = document.createElement('button')
       button.innerText = 'P'
-      button.setAttribute('style', 'color:#000;line-height:1;font-weight:bold;')
+      button.className = 'toastui-editor-toolbar-icons'
+      button.style.margin = '0'
+      button.style.backgroundImage = 'none'
+      button.style.fontSize = '20px'
       button.addEventListener('click', () => {
         if (this.editor?.getCurrentPreviewStyle() === 'tab') {
           this.editor?.changePreviewStyle('vertical')
@@ -80,14 +81,7 @@ export default defineComponent({
           this.options.previewStyle = 'tab'
         }
       })
-      const toolbar = this.editor?.getUI().getToolbar()
-      toolbar?.insertItem(0, {
-        type: 'button',
-        options: {
-          el: button,
-          tooltip: 'Change preview style'
-        }
-      })
+      this.editor?.insertToolbarItem({ groupIndex: 0, itemIndex: 0 }, { name: 'PreviewStyleBtn', el: button, tooltip: 'Change preview style' })
     },
     renderEditor() {
       this.options.el = this.$el
@@ -102,10 +96,10 @@ export default defineComponent({
       }
       this.editor?.off('change')
       this.editor?.off('blur')
-      this.editor?.remove()
+      this.editor?.destroy()
       this.editor = new Editor(Object.assign(this.options, { plugins: [[uml, this.umlOptions]] }))
 
-      this.setCodeMirrorOption()
+      this.setEditorAttribute()
       this.setChangePreviewButton()
     }
   },

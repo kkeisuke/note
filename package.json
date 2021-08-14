@@ -11,8 +11,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@toast-ui/editor": "^2.5.2",
-    "@toast-ui/editor-plugin-uml": "^1.0.0",
+    "@toast-ui/editor": "^3.0.2",
+    "@toast-ui/editor-plugin-uml": "^3.0.1",
     "core-js": "^3.15.2",
     "dayjs": "^1.10.6",
     "dexie": "^3.0.3",
