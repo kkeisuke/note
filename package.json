@@ -11,7 +11,7 @@
     "test:e2e:ci": "vue-cli-service test:e2e --headless"
   },
   "dependencies": {
-    "@toast-ui/editor": "^3.0.2",
+    "@toast-ui/editor": "^3.1.2",
     "@toast-ui/editor-plugin-uml": "^3.0.1",
     "core-js": "^3.20.3",
     "dayjs": "^1.10.7",
