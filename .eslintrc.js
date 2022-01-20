@@ -6,7 +6,7 @@ const config = {
     node: true
   },
 
-  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/typescript/recommended', '@vue/prettier', '@vue/prettier/@typescript-eslint'],
+  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/typescript/recommended', '@vue/prettier'],
 
   parserOptions: {
     ecmaVersion: 2020
@@ -32,7 +32,8 @@ const config = {
     // for 3.v Syntax
     'vue/no-v-model-argument': 'off',
     'vue/no-multiple-template-root': 'off',
-    'vue/no-v-for-template-key': 'off'
+    'vue/no-v-for-template-key': 'off',
+    'vue/multi-word-component-names': 'off'
   },
 
   overrides: [
