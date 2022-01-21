@@ -3,7 +3,6 @@ import { defineComponent, h, nextTick } from 'vue'
 
 import Editor, { EditorOptions } from '@toast-ui/editor'
 import uml from '@toast-ui/editor-plugin-uml'
-import '@toast-ui/editor/dist/toastui-editor.css'
 
 import { sanitize } from '@/plugins/sanitize'
 
@@ -104,7 +103,7 @@ export default defineComponent({
     }
   },
   render() {
-    return h('div')
+    return h('div', { class: ['overflow-auto'] })
   }
 })
 </script>

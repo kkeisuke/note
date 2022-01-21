@@ -1,9 +1,6 @@
 /** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig} */
 const config = {
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: ['./public/**/*.html', './src/**/*.vue']
-  },
+  content: ['./public/**/*.html', './src/**/*.vue'],
   theme: {
     extend: {
       fontSize: {
@@ -11,7 +8,6 @@ const config = {
       }
     }
   },
-  variants: {},
   plugins: [],
   future: {
     defaultLineHeights: true,
