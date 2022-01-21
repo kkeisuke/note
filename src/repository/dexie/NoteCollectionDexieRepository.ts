@@ -12,7 +12,7 @@ export const noteCollectionDexieRepository: NoteCollectionRepository = {
     return noteDexieRepository.table().add(note)
   },
   fetch() {
-    const order: keyof Note = 'createdAt'
+    const order: keyof Note = 'updatedAt'
     return noteDexieRepository.table().reverse().sortBy(order)
   }
 }
