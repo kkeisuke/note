@@ -3,8 +3,8 @@ import DOMPurify from 'dompurify'
 // https://github.com/cure53/DOMPurify/blob/master/demos/hooks-target-blank-demo.html
 DOMPurify.addHook('afterSanitizeAttributes', function (node) {
   if ('target' in node) {
-    ;(node as HTMLElement).setAttribute('target', '_blank')
-    ;(node as HTMLElement).setAttribute('rel', 'noopener noreferrer')
+    node.setAttribute('target', '_blank')
+    node.setAttribute('rel', 'noopener noreferrer')
   }
 })
 
