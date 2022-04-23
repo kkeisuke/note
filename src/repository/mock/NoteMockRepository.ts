@@ -15,4 +15,6 @@ export const noteMockRepository: NoteMockRepository = {
 // 初期データ
 const note = getDefaultNote()
 note.id = 'test0'
+note.title = 'title0'
+note.content = 'content0'
 noteMockRepository.set(note)
