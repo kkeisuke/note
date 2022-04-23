@@ -1,10 +1,13 @@
 <template>
-  <div :class="{ close: !useNoteSidebarLayout.isOpen.value }" class="NoteSidebar w-52 h-full overflow-hidden">
+  <div :class="{ 'w-fit': !useNoteSidebarLayout.isOpen.value }" class="NoteSidebar flex flex-col w-52 h-full overflow-hidden">
     <div class="flex justify-between border-b">
-      <NoteSidebarBtn :is-open="useNoteSidebarLayout.isOpen.value" @click="useNoteSidebarLayout.toggle()" />
-      <NoteMenu v-show="useNoteSidebarLayout.isOpen.value" />
+      <NoteSidebarBtn :is-open="useNoteSidebarLayout.isOpen.value" @click="useNoteSidebarLayout.toggleOpen()" />
+      <NoteMenu v-show="useNoteSidebarLayout.isOpen.value" @show-search="useNoteSidebarLayout.toggleShowSearch()" />
     </div>
-    <NoteList :class="{ close: !useNoteSidebarLayout.isOpen.value }" />
+    <template v-if="useNoteSidebarLayout.isShowSearch.value">
+      <NoteSearchList v-model="useNoteSidebarLayout.keyword.value" :class="{ hidden: !useNoteSidebarLayout.isOpen.value }" />
+    </template>
+    <NoteList :filter="useNoteSidebarLayout.keyword.value" :class="{ hidden: !useNoteSidebarLayout.isOpen.value }" />
   </div>
 </template>
 
@@ -12,6 +15,7 @@
 import { defineComponent } from 'vue'
 import NoteSidebarBtn from '@/components/NoteSidebar/NoteSidebarBtn.vue'
 import NoteMenu from '@/components/NoteList/NoteMenu.vue'
+import NoteSearchList from '@/components/NoteList/NoteSearchList.vue'
 import NoteList from '@/components/NoteList/NoteList.vue'
 import { UseNoteSidebarLayout } from '@/components/NoteSidebar/use/UseNoteSidebarLayout'
 
@@ -20,6 +24,7 @@ export default defineComponent({
   components: {
     NoteSidebarBtn,
     NoteMenu,
+    NoteSearchList,
     NoteList
   },
   setup() {
@@ -29,17 +34,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.NoteSidebar {
-  display: grid;
-  grid-template-rows: auto 1fr;
-
-  &.close {
-    width: auto;
-  }
-  .NoteList.close {
-    display: none;
-  }
-}
-</style>

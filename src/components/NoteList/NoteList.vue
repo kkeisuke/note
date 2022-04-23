@@ -1,7 +1,7 @@
 <template>
   <div class="NoteList h-full overflow-y-auto">
     <ul>
-      <template v-for="note in useNoteList.notes.value" :key="note.id">
+      <template v-for="note in useNoteList.search(filter).value" :key="note.id">
         <NoteListItem :note="note" />
       </template>
     </ul>
@@ -17,6 +17,12 @@ export default defineComponent({
   name: 'NoteList',
   components: {
     NoteListItem
+  },
+  props: {
+    filter: {
+      type: String,
+      default: ''
+    }
   },
   setup() {
     return {
