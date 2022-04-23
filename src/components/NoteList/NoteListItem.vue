@@ -1,5 +1,11 @@
 <template>
-  <li class="NoteListItem p-2 border-b cursor-pointer" :class="{ 'bg-gray-300': useNoteListItem.isSelected(note.id) }" @click="useNoteListItem.select(note.id)">
+  <li
+    class="NoteListItem p-2 border-b cursor-pointer"
+    :class="{ 'bg-gray-300': useNoteListItem.isSelected(note.id) }"
+    tabindex="0"
+    @click="useNoteListItem.select(note.id)"
+    @keydown.enter="useNoteListItem.select(note.id)"
+  >
     <p class="text-sm truncate">
       <span v-if="note.title">{{ note.title }}</span>
       <span v-else class="text-gray-500">No Title</span>
