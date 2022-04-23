@@ -1,5 +1,6 @@
 describe('NoteEdit', () => {
   before(() => {
+    indexedDB.deleteDatabase('Note')
     cy.visit('/')
   })
 

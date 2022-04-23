@@ -68,3 +68,11 @@ Cypress.Commands.add('noteSidebarBtn', () => {
 Cypress.Commands.add('noteSidebarBtnSvg', () => {
   return cy.get('#noteSidebarBtn svg use')
 })
+
+Cypress.Commands.add('toggleSearchInput', () => {
+  cy.get('#noteSearch').click()
+})
+
+Cypress.Commands.add('searchList', (keyword) => {
+  cy.get('#searchInput').type(keyword)
+})

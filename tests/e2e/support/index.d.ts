@@ -10,5 +10,7 @@ declare namespace Cypress {
     noteSidebar(): Chainable<Element>
     noteSidebarBtn(): Chainable<Element>
     noteSidebarBtnSvg(): Chainable<Element>
+    toggleSearchInput(): void
+    searchList(keyword: string): void
   }
 }
