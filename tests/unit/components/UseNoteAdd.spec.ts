@@ -35,6 +35,7 @@ describe('components/UseNoteAdd', () => {
   const useNoteAdd = vm.useNoteAdd
   const useNoteCollection = vm.useNoteCollection
   const useNoteSingle = vm.useNoteSingle
+  useNoteCollection.fetch()
 
   test('add', async () => {
     await useNoteAdd.add()

@@ -34,6 +34,7 @@ describe('components/UseNoteDelete', () => {
 
   const useNoteDelete = vm.useNoteDelete
   const useNoteCollection = vm.useNoteCollection
+  useNoteCollection.fetch()
 
   test('confirmRemove/canRemove', async () => {
     useNoteDelete.confirmRemove(0)
