@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'w-fit': !useNoteSidebarLayout.isOpen.value }" class="NoteSidebar flex flex-col w-52 h-full overflow-hidden">
+  <div :class="{ close: !useNoteSidebarLayout.isOpen.value }" class="NoteSidebar flex flex-col w-52 h-full overflow-hidden">
     <div class="flex justify-between border-b">
       <NoteSidebarBtn :is-open="useNoteSidebarLayout.isOpen.value" @click="useNoteSidebarLayout.toggleOpen()" />
       <NoteMenu v-show="useNoteSidebarLayout.isOpen.value" @show-search="useNoteSidebarLayout.toggleShowSearch()" />
@@ -34,3 +34,11 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.NoteSidebar {
+  &.close {
+    width: auto;
+  }
+}
+</style>
