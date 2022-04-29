@@ -11,7 +11,7 @@ describe('NoteSidebar', () => {
     cy.noteSidebarBtnSvg().should('have.attr', 'xlink:href').and('match', /right/)
 
     // サイドバー縮小
-    cy.noteSidebar().should('have.class', 'w-fit')
+    cy.noteSidebar().should('have.class', 'close')
     // cy.noteSidebar().should('have.css', 'width', '36px')
 
     // メニュー非表示
@@ -29,7 +29,7 @@ describe('NoteSidebar', () => {
     cy.noteSidebarBtnSvg().should('have.attr', 'xlink:href').and('match', /left/)
 
     // サイドバー拡大
-    cy.noteSidebar().should('not.have.class', 'w-fit')
+    cy.noteSidebar().should('not.have.class', 'close')
     // cy.noteSidebar().should('have.css', 'width', '208px')
 
     // メニュー表示
