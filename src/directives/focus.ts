@@ -1,4 +1,4 @@
-import { Directive } from '@vue/runtime-core'
+import type { Directive } from 'vue'
 
 export const vFocus: Directive<HTMLElement> = {
   mounted(el) {

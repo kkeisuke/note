@@ -1,4 +1,4 @@
-import { computed, ComputedRef } from 'vue'
+import { computed, type ComputedRef } from 'vue'
 import type { Note } from '@/entity/Note'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
 

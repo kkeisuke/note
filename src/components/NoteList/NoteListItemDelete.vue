@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { UseNoteDelete } from '@/components/NoteList/use/UseNoteDelete'
 import type { Note } from '@/entity/Note'
 import SvgIcon from '@/components/Common/SvgIcon.vue'
@@ -22,7 +22,7 @@ export default defineComponent({
   },
   props: {
     note: {
-      type: Object as PropType<Note>,
+      type: Object as () => Note,
       require: true,
       default: () => {
         return {}

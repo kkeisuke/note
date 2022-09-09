@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup(props) {
     return {
-      svg: computed(() => `${require(`@/assets/icons/${props.icon}.svg`)}#icon`),
+      svg: computed(() => `${new URL(`../../assets/icons/${props.icon}.svg`, import.meta.url).href}#icon`),
       color: computed(() => (props.inverse ? 'text-white' : props.fill))
     }
   }

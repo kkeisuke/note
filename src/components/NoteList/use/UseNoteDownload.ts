@@ -1,4 +1,4 @@
-import { Note } from '@/entity/Note'
+import type { Note } from '@/entity/Note'
 import { saveAs } from 'file-saver'
 
 const ext = 'md'

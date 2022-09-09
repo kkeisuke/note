@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { UseDateFormatter } from '@/formatter/UseDateFormatter'
 import { UseNoteListItem } from '@/components/NoteList/use/UseNoteListItem'
 import { UseNoteDownload } from '@/components/NoteList/use/UseNoteDownload'
@@ -43,7 +43,7 @@ export default defineComponent({
   },
   props: {
     note: {
-      type: Object as PropType<Note>,
+      type: Object as () => Note,
       require: true,
       default: () => {
         return {}
