@@ -1,17 +1,15 @@
-/** @type {import('@typescript-eslint/experimental-utils').TSESLint.Linter.Config} */
-const config = {
-  root: true,
+/* eslint-env node */
+require('@rushstack/eslint-patch/modern-module-resolution')
 
+module.exports = {
+  root: true,
   env: {
     node: true
   },
-
-  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/typescript/recommended', '@vue/prettier'],
-
+  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/eslint-config-typescript', '@vue/eslint-config-prettier'],
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 'latest'
   },
-
   rules: {
     'vue/array-bracket-spacing': 'error',
     'vue/arrow-spacing': 'error',
@@ -35,15 +33,10 @@ const config = {
     'vue/no-v-for-template-key': 'off',
     'vue/multi-word-component-names': 'off'
   },
-
   overrides: [
     {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
-      env: {
-        jest: true
-      }
+      files: ['cypress/e2e/**.{cy,spec}.{js,ts,jsx,tsx}'],
+      extends: ['plugin:cypress/recommended']
     }
   ]
 }
-
-module.exports = config
