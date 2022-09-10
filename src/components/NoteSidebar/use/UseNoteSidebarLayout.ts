@@ -1,4 +1,4 @@
-import { computed, ComputedRef, Ref, ref } from 'vue'
+import { computed, type ComputedRef, type Ref, ref } from 'vue'
 
 export const UseNoteSidebarLayout = (): {
   isOpen: ComputedRef<boolean>

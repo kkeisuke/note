@@ -1,4 +1,4 @@
-import { getDefaultNote, Note } from '@/entity/Note'
+import { getDefaultNote, type Note } from '@/entity/Note'
 
 type NoteMockRepository = {
   notes: Note[]

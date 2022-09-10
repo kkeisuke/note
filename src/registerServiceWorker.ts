@@ -1,29 +1,17 @@
-/* eslint-disable no-console */
+/// <reference types="vite-plugin-pwa/client" />
 
-import { register } from 'register-service-worker'
+import { registerSW } from 'virtual:pwa-register'
 
-if (process.env.NODE_ENV === 'production') {
-  register(`${process.env.BASE_URL}service-worker.js`, {
-    ready() {
-      console.log('App is being served from cache by a service worker.\n' + 'For more details, visit https://goo.gl/AFskqB')
+if (import.meta.env.PROD) {
+  const intervalMS = 60 * 60 * 1000
+
+  const reload = registerSW({
+    onRegistered(registration) {
+      registration && setInterval(() => registration.update(), intervalMS)
     },
-    registered() {
-      console.log('Service worker has been registered.')
-    },
-    cached() {
-      console.log('Content has been cached for offline use.')
-    },
-    updatefound() {
-      console.log('New content is downloading.')
-    },
-    updated() {
-      console.log('New content is available; please refresh.')
-    },
-    offline() {
-      console.log('No internet connection found. App is running in offline mode.')
-    },
-    error(error) {
-      console.error('Error during service worker registration:', error)
+    onNeedRefresh() {
+      window.alert('最新バージョンを取得しました。更新のため再読み込みされます。')
+      reload()
     }
   })
 }

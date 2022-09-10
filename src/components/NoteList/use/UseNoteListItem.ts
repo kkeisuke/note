@@ -1,4 +1,4 @@
-import { injectUseNoteSingle, ReturnTypeUseNoteSingle } from '@/store/UseNoteSingle'
+import { injectUseNoteSingle, type ReturnTypeUseNoteSingle } from '@/store/UseNoteSingle'
 import type { Note } from '@/entity/Note'
 
 export const UseNoteListItem = (): {

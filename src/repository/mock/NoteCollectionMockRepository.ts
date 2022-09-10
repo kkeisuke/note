@@ -1,4 +1,4 @@
-import { Note } from '@/entity/Note'
+import type { Note } from '@/entity/Note'
 import type { NoteCollectionRepository } from '@/repository/NoteRepository'
 import { noteMockRepository } from './NoteMockRepository'
 

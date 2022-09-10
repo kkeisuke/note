@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, h, nextTick } from 'vue'
 
-import Editor, { EditorOptions } from '@toast-ui/editor'
+import Editor, { type EditorOptions } from '@toast-ui/editor'
 import uml from '@toast-ui/editor-plugin-uml'
 
 import { sanitize } from '@/plugins/sanitize'
@@ -44,7 +44,7 @@ export default defineComponent({
       },
       // @TODO https://github.com/nhn/tui.editor/issues/1089
       umlOptions: {
-        rendererURL: process.env.VUE_APP_PLANTUML_URL
+        rendererURL: import.meta.env.VITE_PLANTUML_URL
       }
     }
   },

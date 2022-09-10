@@ -1,4 +1,4 @@
-import { readonly, Ref, ref } from 'vue'
+import { readonly, type Ref, ref } from 'vue'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { injectUseNoteSingle } from '@/store/UseNoteSingle'
 import type { Note } from '@/entity/Note'
