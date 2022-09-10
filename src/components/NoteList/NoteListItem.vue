@@ -6,17 +6,13 @@
     @click="useNoteListItem.select(note.id)"
     @keydown.enter="useNoteListItem.select(note.id)"
   >
-    <p class="text-sm truncate">
+    <p class="text-xs">
       <span v-if="note.title">{{ note.title }}</span>
       <span v-else class="text-gray-500">No Title</span>
     </p>
-    <p class="mt-1 text-xs truncate">
+    <p class="mt-1 text-xxs truncate">
       <span v-if="note.content">{{ note.content }}</span>
       <span v-else class="text-gray-500">No Contents</span>
-    </p>
-    <p class="mt-1 text-xxs">
-      created {{ useDateFormatter.datetime(note.createdAt) }} <br />
-      updated {{ useDateFormatter.datetime(note.updatedAt) }}
     </p>
     <div class="mt-2 flex justify-between items-center">
       <SvgIcon icon="download" class="h-4 w-4 hover:text-blue-600" @click.stop="useNoteDownload.download(note)" />
