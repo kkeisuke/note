@@ -8,7 +8,8 @@ Note is a web application that uses **IndexedDB** and **LocalStorage**.
 
 - PWA (Desktop)
 - Vue3
-- Vue CLI
+- Vite
+- Vitest
 - TypeScript
 - @toast-ui/editor
 - dexie
@@ -25,12 +26,12 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run build-only
 ```
 
 ### Run your unit tests
