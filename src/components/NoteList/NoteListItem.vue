@@ -6,13 +6,13 @@
     @click="useNoteListItem.select(note.id)"
     @keydown.enter="useNoteListItem.select(note.id)"
   >
-    <p class="text-xs">
+    <p class="text-sm">
       <span v-if="note.title">{{ note.title }}</span>
       <span v-else class="text-gray-500">No Title</span>
     </p>
-    <p class="mt-1 text-xxs truncate">
+    <p class="mt-1 text-xxs truncate text-gray-500">
       <span v-if="note.content">{{ note.content }}</span>
-      <span v-else class="text-gray-500">No Contents</span>
+      <span v-else>No Contents</span>
     </p>
     <div class="mt-2 flex justify-between items-center">
       <SvgIcon icon="download" class="h-4 w-4 hover:text-blue-600" @click.stop="useNoteDownload.download(note)" />
