@@ -3,6 +3,7 @@ import { zipSync, strToU8 } from 'fflate'
 import { saveAs } from 'file-saver'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { UseFilenameFormatter } from '@/formatter/UseFilenameFormatter'
+import type { Note } from '@/entity/Note'
 
 export const UseNoteBackup = (): {
   backup: () => Promise<void>
@@ -14,6 +15,31 @@ export const UseNoteBackup = (): {
 
   const isProcessing = ref(false)
   const backupResult = ref<boolean | null>(null)
+
+  function createFiles(notes: readonly Note[]): Record<string, Uint8Array> {
+    const files: Record<string, Uint8Array> = {}
+    const existingFilenames = new Set<string>()
+
+    for (const note of notes) {
+      const filename = useFilenameFormatter.generateUnique(note.title, existingFilenames)
+      const fullFilename = `${filename}.md`
+
+      files[fullFilename] = strToU8(note.content)
+      existingFilenames.add(fullFilename)
+    }
+
+    return files
+  }
+
+  function downloadZip(files: Record<string, Uint8Array>): void {
+    // ZIP を生成（同期処理）
+    const zipped = zipSync(files)
+
+    // Blob に変換してダウンロード
+    const blob = new Blob([zipped], { type: 'application/zip' })
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
+    saveAs(blob, `notes_backup_${timestamp}.zip`)
+  }
 
   async function backup(): Promise<void> {
     isProcessing.value = true
@@ -28,26 +54,11 @@ export const UseNoteBackup = (): {
         return
       }
 
-      // 2. ZIP 用のファイルオブジェクトを作成
-      const files: Record<string, Uint8Array> = {}
-      const existingFilenames = new Set<string>()
+      // 2. ファイルオブジェクトを作成
+      const files = createFiles(notes)
 
-      // 3. 各ノートを ZIP に追加
-      for (const note of notes) {
-        const filename = useFilenameFormatter.generateUnique(note.title, existingFilenames)
-        const fullFilename = `${filename}.md`
-
-        files[fullFilename] = strToU8(note.content)
-        existingFilenames.add(fullFilename)
-      }
-
-      // 4. ZIP を生成（同期処理）
-      const zipped = zipSync(files)
-
-      // 5. Blob に変換してダウンロード
-      const blob = new Blob([zipped], { type: 'application/zip' })
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
-      saveAs(blob, `notes_backup_${timestamp}.zip`)
+      // 3. ZIP をダウンロード
+      downloadZip(files)
 
       backupResult.value = true
     } catch (error) {
