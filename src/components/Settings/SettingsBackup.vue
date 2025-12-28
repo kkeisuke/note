@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { UseNoteBackup } from '@/components/NoteList/use/UseNoteBackup'
+import { UseNoteBackup } from '@/components/Settings/use/UseNoteBackup'
 import Card from '@/components/Common/Card.vue'
 import BaseButton from '@/components/Common/BaseButton.vue'
 

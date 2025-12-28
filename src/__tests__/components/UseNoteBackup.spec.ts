@@ -3,7 +3,7 @@ import { defineComponent, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { provideUseNoteCollection, injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { provideUseNoteSingle, injectUseNoteSingle } from '@/store/UseNoteSingle'
-import { UseNoteBackup } from '@/components/NoteList/use/UseNoteBackup'
+import { UseNoteBackup } from '@/components/Settings/use/UseNoteBackup'
 import { saveAs } from 'file-saver'
 import { noteMockRepository } from '@/repository/mock/NoteMockRepository'
 
