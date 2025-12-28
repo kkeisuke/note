@@ -205,3 +205,7 @@ export const UseNoteRestore = (): { restore: (file: File) => Promise<void> } => 
 ```
 
 この設計により、復元機能の追加も容易になります。
+
+## 関連ドキュメント
+
+- [設定ビュー UI 実装計画](./settings-view-plan.md) - バックアップ機能を実行するための UI 実装

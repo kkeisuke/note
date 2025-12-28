@@ -49,10 +49,10 @@ describe('components/UseNoteBackup', () => {
     await useNoteCollection.fetch()
 
     // バックアップを実行
-    const result = await useNoteBackup.backup()
+    await useNoteBackup.backup()
 
     // 成功を確認
-    expect(result).toBe(true)
+    expect(useNoteBackup.backupResult.value).toBe(true)
 
     // saveAs が呼ばれたことを確認
     expect(saveAs).toHaveBeenCalledTimes(1)
@@ -65,7 +65,7 @@ describe('components/UseNoteBackup', () => {
     expect(filename).toMatch(/^notes_backup_\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.zip$/)
   })
 
-  test('空のノートリストでは false を返す', async () => {
+  test('空のノートリストでは backupResult が false になる', async () => {
     const wrapper = mount({
       components: {
         useNoteBackupComponent
@@ -95,10 +95,10 @@ describe('components/UseNoteBackup', () => {
     // 空のノートリストを再取得
     await useNoteCollection.fetch()
 
-    const result = await useNoteBackup.backup()
+    await useNoteBackup.backup()
 
     // 失敗を確認
-    expect(result).toBe(false)
+    expect(useNoteBackup.backupResult.value).toBe(false)
     expect(saveAs).not.toHaveBeenCalled()
   })
 })

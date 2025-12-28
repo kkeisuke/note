@@ -1,19 +1,31 @@
+import { ref, computed, type ComputedRef } from 'vue'
 import { zipSync, strToU8 } from 'fflate'
 import { saveAs } from 'file-saver'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
 import { UseFilenameFormatter } from '@/formatter/UseFilenameFormatter'
 
-export const UseNoteBackup = (): { backup: () => Promise<boolean> } => {
+export const UseNoteBackup = (): {
+  backup: () => Promise<void>
+  isProcessing: ComputedRef<boolean>
+  backupResult: ComputedRef<boolean | null>
+} => {
   const useNoteCollection = injectUseNoteCollection()
   const useFilenameFormatter = UseFilenameFormatter()
 
-  async function backup(): Promise<boolean> {
+  const isProcessing = ref(false)
+  const backupResult = ref<boolean | null>(null)
+
+  async function backup(): Promise<void> {
+    isProcessing.value = true
+    backupResult.value = null
+
     try {
       // 1. 全ノートを取得
       const notes = useNoteCollection.notes.value
 
       if (notes.length === 0) {
-        return false
+        backupResult.value = false
+        return
       }
 
       // 2. ZIP 用のファイルオブジェクトを作成
@@ -37,13 +49,17 @@ export const UseNoteBackup = (): { backup: () => Promise<boolean> } => {
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)
       saveAs(blob, `notes_backup_${timestamp}.zip`)
 
-      return true
+      backupResult.value = true
     } catch (error) {
-      return false
+      backupResult.value = false
+    } finally {
+      isProcessing.value = false
     }
   }
 
   return {
-    backup
+    backup,
+    isProcessing: computed(() => isProcessing.value),
+    backupResult: computed(() => backupResult.value)
   }
 }

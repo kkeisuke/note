@@ -129,6 +129,18 @@ const { notes, fetch, add } = injectUseNoteCollection()
   - パターン: `export const UseXxxFormatter = (): { method: (...) => ... } => { ... }`
   - 既存の `UseDateFormatter` と同じパターンに従ってください
 
+### UI テキスト
+
+- **UI 上に表示される全てのテキストは英語で記載してください**
+  - タイトル、ボタンラベル、メッセージ、説明文など
+  - コード内のコメントは日本語でも構いません
+  - 例:
+    - ✅ `<h2>Settings</h2>`
+    - ✅ `<button>Backup Notes</button>`
+    - ✅ `message.value = 'Backup completed successfully'`
+    - ❌ `<h2>設定</h2>`
+    - ❌ `<button>バックアップを実行</button>`
+
 ### パスエイリアス
 
 プロジェクトでは `@/` を `src/` のエイリアスとして使用しています（vite.config.ts で設定）。
