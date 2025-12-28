@@ -48,8 +48,15 @@ describe('components/UseNoteBackup', () => {
     // 全ノートを取得
     await useNoteCollection.fetch()
 
+    // バックアップ実行前の状態を確認
+    expect(useNoteBackup.isProcessing.value).toBe(false)
+    expect(useNoteBackup.backupResult.value).toBe(null)
+
     // バックアップを実行
     await useNoteBackup.backup()
+
+    // バックアップ実行後の状態を確認
+    expect(useNoteBackup.isProcessing.value).toBe(false)
 
     // 成功を確認
     expect(useNoteBackup.backupResult.value).toBe(true)
@@ -95,7 +102,14 @@ describe('components/UseNoteBackup', () => {
     // 空のノートリストを再取得
     await useNoteCollection.fetch()
 
+    // バックアップ実行前の状態を確認
+    expect(useNoteBackup.isProcessing.value).toBe(false)
+    expect(useNoteBackup.backupResult.value).toBe(null)
+
     await useNoteBackup.backup()
+
+    // バックアップ実行後の状態を確認
+    expect(useNoteBackup.isProcessing.value).toBe(false)
 
     // 失敗を確認
     expect(useNoteBackup.backupResult.value).toBe(false)
