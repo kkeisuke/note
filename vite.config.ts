@@ -52,6 +52,7 @@ export default defineConfig({
     }
   },
   test: {
-    watch: false
+    watch: false,
+    setupFiles: ['./src/__tests__/setup.ts']
   }
 })

@@ -19,6 +19,7 @@
     "dayjs": "^1.11.5",
     "dexie": "^3.2.2",
     "dompurify": "^2.4.0",
+    "fflate": "^0.8.2",
     "file-saver": "^2.0.5",
     "tailwindcss": "^3.1.8",
     "uuid": "^9.0.0",

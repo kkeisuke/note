@@ -1,29 +1,41 @@
 <template>
   <div class="Note h-screen">
-    <NoteHeader />
-    <NoteSidebar />
-    <NoteEdit @blur="useNoteCollection.fetch" />
+    <NoteHeader @toggle-settings="toggleSettings" />
+    <!-- メインビュー -->
+    <template v-if="!showSettings">
+      <NoteSidebar />
+      <NoteEdit @blur="useNoteCollection.fetch" />
+    </template>
+    <!-- 設定ビュー -->
+    <SettingsView v-else />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { injectUseNoteCollection } from '@/store/UseNoteCollection'
+import { UseSettingsView } from '@/components/Settings/use/UseSettingsView'
 
 import NoteHeader from '@/components/Layout/NoteHeader.vue'
 import NoteSidebar from '@/components/NoteSidebar/NoteSidebar.vue'
 import NoteEdit from '@/components/NoteEdit/NoteEdit.vue'
+import SettingsView from '@/components/Settings/SettingsView.vue'
 
 export default defineComponent({
   name: 'Note',
   components: {
     NoteHeader,
     NoteSidebar,
-    NoteEdit
+    NoteEdit,
+    SettingsView
   },
   setup() {
+    const { showSettings, toggleSettings } = UseSettingsView()
+
     return {
-      useNoteCollection: injectUseNoteCollection()
+      useNoteCollection: injectUseNoteCollection(),
+      showSettings,
+      toggleSettings
     }
   }
 })
@@ -40,6 +52,9 @@ export default defineComponent({
   }
   .NoteEdit {
     grid-column: 2;
+  }
+  .SettingsView {
+    grid-column: 1 / 3;
   }
 }
 </style>
