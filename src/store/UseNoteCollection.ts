@@ -38,10 +38,16 @@ const UseNoteCollection = () => {
     return count
   }
 
+  async function deleteAll() {
+    await repo.deleteAll()
+    await fetch()
+  }
+
   return {
     fetch,
     add,
     addMany,
+    deleteAll,
     notes: computed(() => noteCollection.get())
   }
 }

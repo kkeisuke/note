@@ -35,4 +35,18 @@ describe('store/UseNoteCollection', () => {
     expect(newID).toBe('test1')
     expect(useNoteCollection.notes.value.length).toBe(2)
   })
+
+  test('deleteAll で全ノートが削除される', async () => {
+    await useNoteCollection.add()
+    await useNoteCollection.fetch()
+
+    // 削除前: 複数件存在すること
+    const beforeCount = useNoteCollection.notes.value.length
+    expect(beforeCount).toBe(3)
+
+    await useNoteCollection.deleteAll()
+
+    // 削除後: 0 件になっていること
+    expect(useNoteCollection.notes.value.length).toBe(0)
+  })
 })

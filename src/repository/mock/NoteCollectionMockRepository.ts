@@ -18,5 +18,8 @@ export const noteCollectionMockRepository: NoteCollectionRepository = {
   },
   async fetch() {
     return noteMockRepository.notes
+  },
+  async deleteAll() {
+    noteMockRepository.notes.length = 0
   }
 }

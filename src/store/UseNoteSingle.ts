@@ -55,11 +55,17 @@ const UseNoteSingle = () => {
     }
   }
 
+  function reset() {
+    noteSingle.reset()
+    cacheRepo.reset()
+  }
+
   return {
     read,
     readCache,
     update,
     destroy,
+    reset,
     note: computed(() => noteSingle.get()),
     clone: computed(() => reactive({ ...noteSingle.get() }))
   }

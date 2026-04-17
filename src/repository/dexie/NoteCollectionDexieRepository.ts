@@ -14,5 +14,8 @@ export const noteCollectionDexieRepository: NoteCollectionRepository = {
   fetch() {
     const order: keyof Note = 'updatedAt'
     return noteDexieRepository.table().reverse().sortBy(order)
+  },
+  async deleteAll() {
+    await noteDexieRepository.table().clear()
   }
 }

@@ -81,4 +81,16 @@ describe('store/UseNoteSingle', () => {
     expect(useNoteSingle.note.value.title).toBe(target.title)
     expect(useNoteSingle.clone.value.title).toBe(target.title)
   })
+
+  test('reset でノート状態とキャッシュがクリアされる', async () => {
+    await useNoteSingle.read(noteID)
+    expect(useNoteSingle.note.value.id).toBe(noteID)
+    expect(window.localStorage.getItem('currentNote')).toBe(noteID)
+
+    useNoteSingle.reset()
+
+    expect(useNoteSingle.note.value.id).toBe('')
+    expect(useNoteSingle.clone.value.id).toBe('')
+    expect(window.localStorage.getItem('currentNote')).toBe('')
+  })
 })

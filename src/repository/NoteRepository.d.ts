@@ -12,6 +12,7 @@ export type NoteRepository<T> = {
 export type NoteCollectionRepository = {
   fetch: () => Promise<Note[]>
   add: (note: Note) => Promise<string>
+  deleteAll: () => Promise<void>
 }
 
 export type NoteSingleRepository = {
