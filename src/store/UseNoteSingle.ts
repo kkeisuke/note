@@ -42,22 +42,21 @@ const UseNoteSingle = () => {
     noteSingle.set(result)
   }
 
+  function reset() {
+    noteSingle.reset()
+    cacheRepo.reset()
+  }
+
   async function destroy(note: Note) {
     try {
       await repo.delete(note.id)
       const current = noteSingle.get()
       if (current.id === note.id) {
-        noteSingle.reset()
-        cacheRepo.reset()
+        reset()
       }
     } catch (error) {
       // 取り急ぎ error は出さない
     }
-  }
-
-  function reset() {
-    noteSingle.reset()
-    cacheRepo.reset()
   }
 
   return {
