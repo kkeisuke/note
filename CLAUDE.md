@@ -1,10 +1,8 @@
 # CLAUDE.md
 
-このファイルは、このリポジトリで作業する際に Claude Code (claude.ai/code) に対してガイダンスを提供します。
+このファイルは、このリポジトリで作業する際の Claude Code (claude.ai/code) 向けリファレンスです。プロジェクトの概要・コマンド・アーキテクチャをまとめています。
 
-## 言語設定
-
-**このプロジェクトでは日本語を使用してください。** コメント、コミットメッセージ、ユーザーとのコミュニケーションは全て日本語で行ってください。
+守るべきルール（言語設定・コード品質・命名規則・UI テキスト等）は `.claude/rules/` 配下の各ファイルを参照してください（Claude Code が自動的にロードします）。
 
 ## プロジェクト概要
 
@@ -41,15 +39,7 @@ npm run lint               # ESLint を自動修正付きで実行
 npm run type-check         # TypeScript の型チェックを実行
 ```
 
-**重要**: コードを作成・修正した際は、必ず以下を実行して警告やエラーを修正してください：
-1. `npm run lint` - ESLint の警告・エラーを修正
-2. `npm run type-check` - TypeScript の型エラーを修正
-
-lint エラーや型エラーが残った状態でタスクを完了させないでください。
-
-**禁止事項**:
-- `eslint-disable-next-line` や `eslint-disable` を使用しないでください
-- ESLint の警告は無視せず、コードを修正して解決してください
+コード品質に関するルール（必須実行、`eslint-disable` 禁止など）は `.claude/rules/code-quality.md` を参照。
 
 ### 環境設定
 
@@ -115,31 +105,6 @@ const { notes, fetch, add } = injectUseNoteCollection()
 ### エンティティモデル
 
 - `src/entity/Note.ts`: コアとなる Note 型の定義（フィールド: id, title, content, createdAt, updatedAt）
-
-### ディレクトリ構造ルール
-
-- **目的に合わせて適切にパッケージを分ける**: 機能や責務に応じて適切なディレクトリを使用してください
-  - 例: `formatter/` (フォーマット関数), `validator/` (バリデーション), `parser/` (パース処理) など
-- **`src/utils/` は作成しない**: 汎用的な `utils` ディレクトリを作るとカオスになります。必ず目的を明確にしたディレクトリ名を使用してください
-
-### 命名規則
-
-- **フォーマッター関数**: Composition API パターンを使用し、`Use` プレフィックスを付けます
-  - 例: `UseDateFormatter`, `UseFilenameFormatter`
-  - パターン: `export const UseXxxFormatter = (): { method: (...) => ... } => { ... }`
-  - 既存の `UseDateFormatter` と同じパターンに従ってください
-
-### UI テキスト
-
-- **UI 上に表示される全てのテキストは英語で記載してください**
-  - タイトル、ボタンラベル、メッセージ、説明文など
-  - コード内のコメントは日本語でも構いません
-  - 例:
-    - ✅ `<h2>Settings</h2>`
-    - ✅ `<button>Backup Notes</button>`
-    - ✅ `message.value = 'Backup completed successfully'`
-    - ❌ `<h2>設定</h2>`
-    - ❌ `<button>バックアップを実行</button>`
 
 ### パスエイリアス
 
