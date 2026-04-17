@@ -27,9 +27,21 @@ const UseNoteCollection = () => {
     return id
   }
 
+  async function addMany(partials: Array<Pick<Note, 'title' | 'content'>>): Promise<number> {
+    let count = 0
+    for (const partial of partials) {
+      const note: Note = { ...getDefaultNote(), ...partial }
+      await repo.add(note)
+      count++
+    }
+    await fetch()
+    return count
+  }
+
   return {
     fetch,
     add,
+    addMany,
     notes: computed(() => noteCollection.get())
   }
 }
