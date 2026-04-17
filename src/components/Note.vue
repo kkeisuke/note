@@ -7,7 +7,7 @@
       <NoteEdit @blur="useNoteCollection.fetch" />
     </template>
     <!-- 設定ビュー -->
-    <SettingsView v-else />
+    <SettingsView v-else @back="toggleSettings" />
   </div>
 </template>
 
