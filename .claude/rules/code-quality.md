@@ -16,3 +16,10 @@ lint エラーや型エラーが残った状態でタスクを完了させない
 
 - `eslint-disable-next-line` や `eslint-disable` を使用しない
 - ESLint の警告は無視せず、コードを修正して解決する
+
+## 構文スタイル
+
+- `if` / `else` / `for` / `while` などの制御構文の本体は、1 文であっても必ず `{}` で囲む
+  - OK: `if (cond) { doSomething() }`
+  - NG: `if (cond) doSomething()`
+  - NG: `if (cond)\n  doSomething()`
