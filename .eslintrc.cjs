@@ -25,6 +25,7 @@ module.exports = {
     'vue/space-infix-ops': 'error',
     'vue/space-unary-ops': 'error',
     'vue/v-on-function-call': 'error',
+    curly: ['error', 'all'],
     'no-console': 'warn',
     'no-debugger': 'warn',
     // for 3.v Syntax

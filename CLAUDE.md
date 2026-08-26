@@ -2,7 +2,7 @@
 
 このファイルは、このリポジトリで作業する際の Claude Code (claude.ai/code) 向けリファレンスです。プロジェクトの概要・コマンド・アーキテクチャをまとめています。
 
-守るべきルール（言語設定・コード品質・命名規則・UI テキスト等）は `.claude/rules/` 配下の各ファイルを参照してください（Claude Code が自動的にロードします）。
+守るべきルール（コード品質・ディレクトリ構造・命名規則・UI テキスト）は `.claude/rules/` 配下の各ファイルを参照してください（Claude Code が自動的にロードします）。
 
 ## プロジェクト概要
 
@@ -21,7 +21,6 @@ npm run preview            # 本番ビルドをローカルでプレビュー（
 
 ```bash
 npm run build-only         # 本番用にビルド（dist/に出力）
-npm run type-check         # TypeScript の型チェックを実行
 ```
 
 ### テスト
@@ -39,7 +38,7 @@ npm run lint               # ESLint を自動修正付きで実行
 npm run type-check         # TypeScript の型チェックを実行
 ```
 
-コード品質に関するルール（必須実行、`eslint-disable` 禁止など）は `.claude/rules/code-quality.md` を参照。
+実行タイミングと ESLint の運用ルールは `.claude/rules/code-quality.md` を参照。
 
 ### 環境設定
 
